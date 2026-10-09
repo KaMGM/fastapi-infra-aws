@@ -19,17 +19,21 @@ variable "instanceType" {
 
 variable "cpu" {
     description = "la valeur du cpu"
+    default     = 256
 }
 
 variable "memory" {
     description = "la memoire"
+    default     = 512
+
 }
 
 variable "ami_bastion" {
   description = "le type d'image"
   type        = string
+  default     = "dev"
 }
 
 variable "mail" {
-    description = "l'adresse e-mail pour les alertes"
+    description = "l'adresse mail pour les alertes"
 }
