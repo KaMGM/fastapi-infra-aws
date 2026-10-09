@@ -13,7 +13,7 @@ variable "db_password" {
 variable "instanceType" {
   description = "le type d'instance"
   type        = string
-  
+  default     = "t2.micro"
 }
 
 
