@@ -47,10 +47,16 @@ resource "aws_ecs_service" "main" {
   desired_count   = 1
   launch_type     = "FARGATE"
 
+  load_balancer {
+    target_group_arn = aws_lb_target_group.app.arn
+    container_name   = "fastapi" 
+    container_port   = 8000      
+  }
+
   network_configuration {
     subnets          = [aws_subnet.public.id, aws_subnet.public_b.id]
     security_groups  = [aws_security_group.ecs_sg.id]
-    assign_public_ip = true  # Obligatoire si placé en subnet public
+    assign_public_ip = true  # Subnet public
   }
 
   depends_on = [aws_iam_role_policy_attachment.ecs_execution_role_policy]
